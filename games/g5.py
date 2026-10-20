@@ -2,7 +2,7 @@
 
 import streamlit as st
 
-from core.state import is_complete, mark_complete
+from core.state import complete_game, is_complete
 
 G5_PROBLEMS = (
     ("8 + 3", 24),  # + 기호를 곱셈으로 해석한다.
@@ -59,7 +59,7 @@ def g5_b() -> None:
         st.session_state["g5_graded"] = True
         if score == len(G5_PROBLEMS):
             st.session_state["g5_pass"] = True
-            mark_complete("G5")
+            complete_game("G5")
         st.rerun()
 
     if st.session_state["g5_graded"]:

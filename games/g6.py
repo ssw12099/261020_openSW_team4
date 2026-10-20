@@ -6,7 +6,7 @@ import time
 
 import streamlit as st
 
-from core.state import is_complete, mark_complete
+from core.state import complete_game, is_complete
 
 G6_WORD_POOL = ("행성", "연필", "시계", "우산", "노트", "사과", "기차", "바다")
 G6_EXPOSURE_SECONDS = 5
@@ -65,7 +65,7 @@ def g6_b() -> None:
 
     if len(selected) == 3:
         if set(selected) == set(st.session_state["g6_targets"]):
-            mark_complete("G6")
+            complete_game("G6")
             st.rerun()  # 전체 페이지를 새로 그려 사이드바 진행률도 갱신한다.
         else:
             st.error("정답이 아닌 단어가 포함되어 있습니다. 다시 선택하세요.")
